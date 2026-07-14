@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
+@source "../../storage/framework/views/*.php";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui;
+  --color-teal-brand: #0d7c7d;
+  --color-teal-brand-dark: #074e50;
+  --color-gold-brand: #c9a84c;
+  --color-gold-brand-dark: #b8983c;
+}
+
+/* ── Hero Carousel ── */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+.carousel-slide {
+  min-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ── Topbar / Navbar scroll state ── */
+.topbar-hidden {
+  transform: translateY(-100%);
+  margin-bottom: -40px;
+}
+.navbar-scrolled {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+}
+
+/* ── Fade-in animation ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Custom styles for map */
+.kontak-map iframe {
+  filter: grayscale(0.2) contrast(1.1);
+  transition: filter 0.3s ease;
+}
+
+.kontak-map iframe:hover {
+  filter: grayscale(0);
+}
+
+/* Mobile Dropdown Nav */
+.mobile-dropdown {
+  max-height: 0;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  transition: max-height 0.4s ease-in-out;
+}
+.mobile-dropdown.open {
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.mobile-sub-list {
+  display: none;
+}
+.mobile-sub-list.open {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .carousel-slide {
+    height: 40vh !important;
+    min-height: 40vh !important;
+  }
+  .carousel-container {
+    height: 40vh !important;
+    min-height: 40vh !important;
+  }
+}
