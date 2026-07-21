@@ -111,4 +111,12 @@ class PageController extends Controller
             'otherBeritas' => $otherBeritas,
         ]);
     }
+
+    public function akreditasi()
+    {
+        return view('pages.akreditasi', [
+            'title'    => 'Akreditasi PAI',
+            'subtitle' => 'Sertifikat Akreditasi Program Studi Pendidikan Agama Islam STAIMAS Wonogiri',
+        ]);
+    }
 }
