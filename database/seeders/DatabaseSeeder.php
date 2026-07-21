@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::updateOrCreate(
-            ['email' => 'admin@pai.staimas.ac.id'],
+            ['email' => 'yoga@staimas.com'],
             [
-                'name' => 'Admin',
-                'password' => bcrypt('password'),
+                'name' => 'Yoga',
+                'password' => bcrypt('stmas123'),
                 'is_admin' => true,
             ]
         );
