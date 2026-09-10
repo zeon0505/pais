@@ -139,6 +139,44 @@
     nav a.nav-link.active::after { width: 100%; }
 
 
+      /* ── DROPDOWN CSS ── */
+    .dropdown-group { position: relative; }
+    .dropdown-menu {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: white;
+      min-width: 220px;
+      padding: 0.5rem 0;
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      border: 1px solid #f3f4f6;
+      transform: translateY(10px);
+      transition: all 0.2s ease;
+      z-index: 50;
+    }
+    .dropdown-group:hover .dropdown-menu {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .dropdown-item {
+      display: block;
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      color: #4b5563;
+      transition: all 0.15s ease;
+    }
+    .dropdown-item:hover {
+      background-color: #f3f4f6;
+      color: #0f766e;
+    }
+    
+    /* Mobile Submenu */
+    .mobile-submenu { display: none; background: #f9fafb; padding-left: 1rem; border-left: 2px solid #0f766e; margin-top: 0.5rem; }
+    .mobile-submenu.open { display: block; }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased font-sans">
@@ -174,14 +212,72 @@
         </div>
       </a>
 
-      <nav class="hidden lg:block">
-        <ul class="flex items-center gap-8 text-[14px] font-medium text-gray-600">
-          <li><a href="{{ route('home') }}" class="nav-link hover:text-teal-700 transition-colors py-2 {{ request()->routeIs('home') ? 'font-bold text-teal-700 active' : '' }}">BERANDA</a></li>
-          <li><a href="{{ route('pages.visi-misi') }}" class="nav-link hover:text-teal-700 transition-colors py-2 {{ request()->routeIs('pages.visi-misi') ? 'font-bold text-teal-700 active' : '' }}">VISI & MISI</a></li>
-          <li><a href="{{ route('pages.dosen') }}" class="nav-link hover:text-teal-700 transition-colors py-2 {{ request()->routeIs('pages.dosen') ? 'font-bold text-teal-700 active' : '' }}">DOSEN</a></li>
-          <li><a href="{{ route('pages.kurikulum') }}" class="nav-link hover:text-teal-700 transition-colors py-2 {{ request()->routeIs('pages.kurikulum') ? 'font-bold text-teal-700 active' : '' }}">KURIKULUM</a></li>
-          <li><a href="{{ route('pages.berita') }}" class="nav-link hover:text-teal-700 transition-colors py-2 {{ request()->routeIs('pages.berita*') ? 'font-bold text-teal-700 active' : '' }}">BERITA PAI</a></li>
-          <li><a href="{{ route('pages.akreditasi') }}" class="nav-link hover:text-teal-700 transition-colors py-2 {{ request()->routeIs('pages.akreditasi') ? 'font-bold text-teal-700 active' : '' }}">AKREDITASI</a></li>
+            <nav class="hidden lg:block">
+        <ul class="flex items-center gap-6 text-[14px] font-medium text-gray-600">
+          
+          <!-- BERANDA -->
+          <li>
+            <a href="{{ route('home') }}" class="nav-link hover:text-teal-700 transition-colors py-2 {{ request()->routeIs('home') ? 'font-bold text-teal-700 active' : '' }}">BERANDA</a>
+          </li>
+
+          <!-- PROFIL -->
+          <li class="dropdown-group py-2">
+            <a href="#" class="nav-link hover:text-teal-700 transition-colors flex items-center gap-1 {{ request()->routeIs('pages.sejarah', 'pages.visi-misi', 'pages.struktur-organisasi', 'pages.dosen*', 'pages.akreditasi') ? 'font-bold text-teal-700 active' : '' }}">
+              PROFIL <i class="fas fa-chevron-down text-[10px]"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="{{ route('pages.sejarah') }}" class="dropdown-item">Sejarah</a>
+              <a href="{{ route('pages.visi-misi') }}" class="dropdown-item">Visi Misi & Tujuan (VMTS)</a>
+              <a href="{{ route('pages.struktur-organisasi') }}" class="dropdown-item">Struktur Organisasi</a>
+              <a href="{{ route('pages.dosen') }}" class="dropdown-item">Daftar Dosen</a>
+              <a href="{{ route('pages.akreditasi') }}" class="dropdown-item">Status Izin & Akreditasi</a>
+            </div>
+          </li>
+
+          <!-- AKADEMIK -->
+          <li class="dropdown-group py-2">
+            <a href="#" class="nav-link hover:text-teal-700 transition-colors flex items-center gap-1 {{ request()->routeIs('pages.kurikulum', 'pages.rps', 'pages.kalender-akademik', 'pages.panduan-ta', 'pages.pedoman-ppl', 'pages.lab-microteaching') ? 'font-bold text-teal-700 active' : '' }}">
+              AKADEMIK <i class="fas fa-chevron-down text-[10px]"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="{{ route('pages.kurikulum') }}" class="dropdown-item">Kurikulum</a>
+              <a href="{{ route('pages.rps') }}" class="dropdown-item">RPS</a>
+              <a href="{{ route('pages.kalender-akademik') }}" class="dropdown-item">Kalender Akademik</a>
+              <a href="{{ route('pages.panduan-ta') }}" class="dropdown-item">Panduan Tugas Akhir</a>
+              <a href="{{ route('pages.pedoman-ppl') }}" class="dropdown-item">Pedoman PPL</a>
+              <a href="{{ route('pages.lab-microteaching') }}" class="dropdown-item">Lab Microteaching</a>
+            </div>
+          </li>
+
+          <!-- PMB & KEMAHASISWAAN -->
+          <li class="dropdown-group py-2">
+            <a href="#" class="nav-link hover:text-teal-700 transition-colors flex items-center gap-1 {{ request()->routeIs('pages.info-pmb', 'pages.kegiatan-prestasi') ? 'font-bold text-teal-700 active' : '' }}">
+              KEMAHASISWAAN <i class="fas fa-chevron-down text-[10px]"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="{{ route('pages.info-pmb') }}" class="dropdown-item">Info Pendaftaran Maba</a>
+              <a href="{{ route('pages.kegiatan-prestasi') }}" class="dropdown-item">Kegiatan & Prestasi</a>
+            </div>
+          </li>
+
+          <!-- TRIDHARMA -->
+          <li class="dropdown-group py-2">
+            <a href="#" class="nav-link hover:text-teal-700 transition-colors flex items-center gap-1 {{ request()->routeIs('pages.penelitian', 'pages.pengabdian', 'pages.kerjasama', 'pages.jurnal') ? 'font-bold text-teal-700 active' : '' }}">
+              TRIDHARMA <i class="fas fa-chevron-down text-[10px]"></i>
+            </a>
+            <div class="dropdown-menu">
+              <a href="{{ route('pages.penelitian') }}" class="dropdown-item">Penelitian</a>
+              <a href="{{ route('pages.pengabdian') }}" class="dropdown-item">Pengabdian Masyarakat</a>
+              <a href="{{ route('pages.kerjasama') }}" class="dropdown-item">Kerjasama/MoU</a>
+              <a href="{{ route('pages.jurnal') }}" class="dropdown-item">Jurnal Prodi PAI</a>
+            </div>
+          </li>
+
+          <!-- AKREDITASI -->
+          <li>
+            <a href="{{ route('pages.dokumen-akreditasi') }}" class="nav-link hover:text-teal-700 transition-colors py-2 {{ request()->routeIs('pages.dokumen-akreditasi') ? 'font-bold text-teal-700 active' : '' }}">DOKUMEN LAMDIK</a>
+          </li>
+
         </ul>
       </nav>
 
@@ -195,15 +291,70 @@
       </div>
     </div>
 
-    <!-- Mobile Dropdown -->
+        <!-- Mobile Dropdown -->
     <div class="mobile-dropdown lg:hidden border-t border-gray-100 bg-white shadow-lg" id="mobile-menu">
-      <ul class="flex flex-col px-4 py-2">
-        <li><a href="{{ route('home') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-700"><i class="fas fa-home w-4 text-teal-600"></i> Beranda</a></li>
-        <li><a href="{{ route('pages.visi-misi') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-700"><i class="fas fa-eye w-4 text-teal-600"></i> Visi & Misi</a></li>
-        <li><a href="{{ route('pages.dosen') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-700"><i class="fas fa-users w-4 text-teal-600"></i> Dosen</a></li>
-        <li><a href="{{ route('pages.kurikulum') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-700"><i class="fas fa-book w-4 text-teal-600"></i> Kurikulum</a></li>
-        <li><a href="{{ route('pages.berita') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-700"><i class="fas fa-newspaper w-4 text-teal-600"></i> Berita PAI</a></li>
-        <li><a href="{{ route('pages.akreditasi') }}" class="flex items-center gap-3 py-3 border-b border-gray-100 text-sm font-semibold text-gray-700 hover:text-teal-700"><i class="fas fa-certificate w-4 text-teal-600"></i> Akreditasi</a></li>
+      <ul class="flex flex-col px-4 py-2 text-sm font-semibold text-gray-700">
+        <li><a href="{{ route('home') }}" class="block py-3 border-b border-gray-100 hover:text-teal-700"><i class="fas fa-home w-5 text-teal-600"></i> Beranda</a></li>
+        
+        <!-- Mobile Profil -->
+        <li>
+          <div class="flex justify-between items-center py-3 border-b border-gray-100 hover:text-teal-700 cursor-pointer" onclick="toggleSubmenu('mob-profil')">
+            <span><i class="fas fa-id-card w-5 text-teal-600"></i> Profil</span>
+            <i class="fas fa-chevron-down text-xs"></i>
+          </div>
+          <div id="mob-profil" class="mobile-submenu">
+            <a href="{{ route('pages.sejarah') }}" class="block py-2 text-gray-600">Sejarah</a>
+            <a href="{{ route('pages.visi-misi') }}" class="block py-2 text-gray-600">Visi Misi & Tujuan (VMTS)</a>
+            <a href="{{ route('pages.struktur-organisasi') }}" class="block py-2 text-gray-600">Struktur Organisasi</a>
+            <a href="{{ route('pages.dosen') }}" class="block py-2 text-gray-600">Daftar Dosen</a>
+            <a href="{{ route('pages.akreditasi') }}" class="block py-2 text-gray-600">Status Izin & Akreditasi</a>
+          </div>
+        </li>
+
+        <!-- Mobile Akademik -->
+        <li>
+          <div class="flex justify-between items-center py-3 border-b border-gray-100 hover:text-teal-700 cursor-pointer" onclick="toggleSubmenu('mob-akademik')">
+            <span><i class="fas fa-book w-5 text-teal-600"></i> Akademik</span>
+            <i class="fas fa-chevron-down text-xs"></i>
+          </div>
+          <div id="mob-akademik" class="mobile-submenu">
+            <a href="{{ route('pages.kurikulum') }}" class="block py-2 text-gray-600">Kurikulum</a>
+            <a href="{{ route('pages.rps') }}" class="block py-2 text-gray-600">RPS</a>
+            <a href="{{ route('pages.kalender-akademik') }}" class="block py-2 text-gray-600">Kalender Akademik</a>
+            <a href="{{ route('pages.panduan-ta') }}" class="block py-2 text-gray-600">Panduan Tugas Akhir</a>
+            <a href="{{ route('pages.pedoman-ppl') }}" class="block py-2 text-gray-600">Pedoman PPL</a>
+            <a href="{{ route('pages.lab-microteaching') }}" class="block py-2 text-gray-600">Lab Microteaching</a>
+          </div>
+        </li>
+
+        <!-- Mobile Kemahasiswaan -->
+        <li>
+          <div class="flex justify-between items-center py-3 border-b border-gray-100 hover:text-teal-700 cursor-pointer" onclick="toggleSubmenu('mob-mhs')">
+            <span><i class="fas fa-users w-5 text-teal-600"></i> Kemahasiswaan</span>
+            <i class="fas fa-chevron-down text-xs"></i>
+          </div>
+          <div id="mob-mhs" class="mobile-submenu">
+            <a href="{{ route('pages.info-pmb') }}" class="block py-2 text-gray-600">Info Pendaftaran Maba</a>
+            <a href="{{ route('pages.kegiatan-prestasi') }}" class="block py-2 text-gray-600">Kegiatan & Prestasi</a>
+          </div>
+        </li>
+
+        <!-- Mobile Tridharma -->
+        <li>
+          <div class="flex justify-between items-center py-3 border-b border-gray-100 hover:text-teal-700 cursor-pointer" onclick="toggleSubmenu('mob-tri')">
+            <span><i class="fas fa-hand-holding-heart w-5 text-teal-600"></i> Tridharma</span>
+            <i class="fas fa-chevron-down text-xs"></i>
+          </div>
+          <div id="mob-tri" class="mobile-submenu">
+            <a href="{{ route('pages.penelitian') }}" class="block py-2 text-gray-600">Penelitian</a>
+            <a href="{{ route('pages.pengabdian') }}" class="block py-2 text-gray-600">Pengabdian Masyarakat</a>
+            <a href="{{ route('pages.kerjasama') }}" class="block py-2 text-gray-600">Kerjasama/MoU</a>
+            <a href="{{ route('pages.jurnal') }}" class="block py-2 text-gray-600">Jurnal Prodi PAI</a>
+          </div>
+        </li>
+
+        <li><a href="{{ route('pages.dokumen-akreditasi') }}" class="block py-3 border-b border-gray-100 hover:text-teal-700"><i class="fas fa-certificate w-5 text-teal-600"></i> Dokumen Akreditasi</a></li>
+        
         <li class="py-4">
           <a href="https://staimaswonogiri.ecampuz.com/eadmisi/" target="_blank" class="flex justify-center items-center gap-2 bg-teal-700 hover:bg-teal-800 text-white py-3 rounded-xl font-bold text-sm shadow transition-colors">
             <i class="fas fa-graduation-cap"></i> Daftar PMB 2026
@@ -212,6 +363,12 @@
       </ul>
     </div>
   </header>
+
+  <script>
+    function toggleSubmenu(id) {
+      document.getElementById(id).classList.toggle('open');
+    }
+  </script>
 
   <!-- WRAPPER UNTUK TRANSISI -->
   <div id="page-wrapper">

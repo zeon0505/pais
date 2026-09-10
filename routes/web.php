@@ -13,15 +13,40 @@ use App\Http\Controllers\Admin\PosterController;
 //  PUBLIC ROUTES
 // ═══════════════════════════════════════════
 Route::get('/', [PageController::class, 'home'])->name('home');
+// Profil
+Route::get('/sejarah',    [PageController::class, 'sejarah'])->name('pages.sejarah');
 Route::get('/visi-misi',  [PageController::class, 'visiMisi'])->name('pages.visi-misi');
+Route::get('/struktur-organisasi', [PageController::class, 'strukturOrganisasi'])->name('pages.struktur-organisasi');
 Route::get('/dosen',      [PageController::class, 'dosen'])->name('pages.dosen');
 Route::get('/dosen/{slug}', [PageController::class, 'dosenShow'])->name('pages.dosen.show');
+Route::get('/akreditasi', [PageController::class, 'akreditasi'])->name('pages.akreditasi');
+
+// Akademik
 Route::get('/kurikulum',  [PageController::class, 'kurikulum'])->name('pages.kurikulum');
+Route::get('/rps',        [PageController::class, 'rps'])->name('pages.rps');
+Route::get('/kalender-akademik', [PageController::class, 'kalenderAkademik'])->name('pages.kalender-akademik');
+Route::get('/panduan-tugas-akhir', [PageController::class, 'panduanTa'])->name('pages.panduan-ta');
+Route::get('/pedoman-ppl',[PageController::class, 'pedomanPpl'])->name('pages.pedoman-ppl');
+Route::get('/lab-microteaching', [PageController::class, 'labMicroteaching'])->name('pages.lab-microteaching');
+
+// PMB & Kemahasiswaan
+Route::get('/info-pendaftaran', [PageController::class, 'infoPmb'])->name('pages.info-pmb');
+Route::get('/kegiatan-prestasi', [PageController::class, 'kegiatanPrestasi'])->name('pages.kegiatan-prestasi');
+
+// Tridharma
+Route::get('/penelitian', [PageController::class, 'penelitian'])->name('pages.penelitian');
+Route::get('/pengabdian', [PageController::class, 'pengabdian'])->name('pages.pengabdian');
+Route::get('/kerjasama',  [PageController::class, 'kerjasama'])->name('pages.kerjasama');
+Route::get('/jurnal',     [PageController::class, 'jurnal'])->name('pages.jurnal');
+
+// Dokumen Akreditasi
+Route::get('/dokumen-akreditasi', [PageController::class, 'dokumenAkreditasi'])->name('pages.dokumen-akreditasi');
+
+// Berita & Pengumuman
 Route::get('/berita',     [PageController::class, 'berita'])->name('pages.berita');
 Route::get('/berita/{slug}', [PageController::class, 'beritaShow'])->name('pages.berita.show');
 Route::get('/pengumuman', [PageController::class, 'pengumuman'])->name('pages.pengumuman');
 Route::get('/pengumuman/{key}', [PageController::class, 'pengumumanShow'])->name('pages.pengumuman.show');
-Route::get('/akreditasi', [PageController::class, 'akreditasi'])->name('pages.akreditasi');
 
 // ═══════════════════════════════════════════
 //  ADMIN ROUTES (tersembunyi dari publik)

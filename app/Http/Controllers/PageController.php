@@ -150,4 +150,122 @@ class PageController extends Controller
             'subtitle' => 'Sertifikat Akreditasi Program Studi Pendidikan Agama Islam STAIMAS Wonogiri',
         ]);
     }
+
+    // --- PROFIL ---
+    public function sejarah()
+    {
+        return view('pages.sejarah', [
+            'title'    => 'Sejarah PAI',
+            'subtitle' => 'Sejarah singkat berdirinya Program Studi Pendidikan Agama Islam',
+        ]);
+    }
+
+    public function strukturOrganisasi()
+    {
+        return view('pages.struktur-organisasi', [
+            'title'    => 'Struktur Organisasi',
+            'subtitle' => 'Struktur kepemimpinan dan organisasi Prodi PAI',
+        ]);
+    }
+
+    // --- AKADEMIK ---
+    public function rps()
+    {
+        return view('pages.rps', [
+            'title'    => 'Rencana Pembelajaran Semester (RPS)',
+            'subtitle' => 'Dokumen RPS mata kuliah Program Studi PAI',
+        ]);
+    }
+
+    public function kalenderAkademik()
+    {
+        return view('pages.kalender-akademik', [
+            'title'    => 'Kalender Akademik',
+            'subtitle' => 'Jadwal dan kalender akademik tahun berjalan',
+        ]);
+    }
+
+    public function panduanTa()
+    {
+        return view('pages.panduan-ta', [
+            'title'    => 'Panduan Tugas Akhir / Skripsi',
+            'subtitle' => 'Pedoman penulisan dan pelaksanaan Tugas Akhir mahasiswa',
+        ]);
+    }
+
+    public function pedomanPpl()
+    {
+        return view('pages.pedoman-ppl', [
+            'title'    => 'Pedoman PPL',
+            'subtitle' => 'Panduan pelaksanaan Praktik Pengalaman Lapangan',
+        ]);
+    }
+
+    public function labMicroteaching()
+    {
+        return view('pages.lab-microteaching', [
+            'title'    => 'Lab Microteaching',
+            'subtitle' => 'Informasi fasilitas dan kegiatan Laboratorium Microteaching',
+        ]);
+    }
+
+    // --- PMB & KEMAHASISWAAN ---
+    public function infoPmb()
+    {
+        return view('pages.info-pmb', [
+            'title'    => 'Info Pendaftaran Mahasiswa Baru',
+            'subtitle' => 'Informasi pendaftaran, syarat, dan jalur penerimaan mahasiswa baru',
+        ]);
+    }
+
+    public function kegiatanPrestasi()
+    {
+        return view('pages.kegiatan-prestasi', [
+            'title'    => 'Kegiatan & Prestasi Mahasiswa',
+            'subtitle' => 'Dokumentasi kegiatan kemahasiswaan dan prestasi akademik/non-akademik',
+        ]);
+    }
+
+    // --- TRIDHARMA ---
+    public function penelitian()
+    {
+        return view('pages.penelitian', [
+            'title'    => 'Penelitian',
+            'subtitle' => 'Daftar penelitian dosen dan mahasiswa Prodi PAI',
+        ]);
+    }
+
+    public function pengabdian()
+    {
+        return view('pages.pengabdian', [
+            'title'    => 'Pengabdian Masyarakat',
+            'subtitle' => 'Kegiatan Pengabdian kepada Masyarakat (PkM) Prodi PAI',
+        ]);
+    }
+
+    public function kerjasama()
+    {
+        return view('pages.kerjasama', [
+            'title'    => 'Kerjasama & MoU',
+            'subtitle' => 'Jejaring kerjasama Institusi dan Prodi PAI',
+        ]);
+    }
+
+    public function jurnal()
+    {
+        return view('pages.jurnal', [
+            'title'    => 'Jurnal Prodi PAI (Man Ana)',
+            'subtitle' => 'Jurnal ilmiah berkala Program Studi Pendidikan Agama Islam',
+        ]);
+    }
+
+    // --- DOKUMEN AKREDITASI ---
+    public function dokumenAkreditasi()
+    {
+        return view('pages.dokumen-akreditasi', [
+            'title'    => 'Dokumen Akreditasi (9 Kriteria)',
+            'subtitle' => 'Dokumen pendukung akreditasi LAMDIK Prodi PAI',
+        ]);
+    }
+
 }
