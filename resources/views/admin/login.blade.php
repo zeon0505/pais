@@ -62,7 +62,7 @@
       <p class="text-center text-xs text-gray-400">Halaman ini tidak ditampilkan di website publik.</p>
     </div>
 
-    <p class="text-center text-teal-500 text-xs mt-6">© 2025 PAI STAIMAS Wonogiri</p>
+    <p class="text-center text-teal-500 text-xs mt-6">© 2026 PAI STAIMAS Wonogiri</p>
   </div>
 
 </body>
