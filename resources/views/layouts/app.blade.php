@@ -249,6 +249,11 @@
             </div>
           </li>
 
+          <!-- BERITA -->
+          <li>
+            <a href="{{ route('pages.berita') }}" class="nav-link hover:text-teal-700 transition-colors py-2 {{ request()->routeIs('pages.berita*') ? 'font-bold text-teal-700 active' : '' }}">BERITA</a>
+          </li>
+
           <!-- PMB & KEMAHASISWAAN -->
           <li class="dropdown-group py-2">
             <a href="#" class="nav-link hover:text-teal-700 transition-colors flex items-center gap-1 {{ request()->routeIs('pages.info-pmb', 'pages.kegiatan-prestasi') ? 'font-bold text-teal-700 active' : '' }}">
@@ -326,6 +331,9 @@
             <a href="{{ route('pages.lab-microteaching') }}" class="block py-2 text-gray-600">Lab Microteaching</a>
           </div>
         </li>
+
+        <!-- Mobile Berita -->
+        <li><a href="{{ route('pages.berita') }}" class="block py-3 border-b border-gray-100 hover:text-teal-700"><i class="fas fa-newspaper w-5 text-teal-600"></i> Berita</a></li>
 
         <!-- Mobile Kemahasiswaan -->
         <li>

@@ -79,6 +79,27 @@
         <i class="fas fa-flag text-yellow-600"></i>
         <span class="text-sm font-semibold text-yellow-700">Tambah Poster</span>
       </a>
+
+      {{-- Tombol 2FA --}}
+      @if(auth()->user()->google2fa_enabled)
+        <div class="flex items-center gap-3 p-3 rounded-xl bg-green-50 border border-green-200">
+          <i class="fas fa-shield-alt text-green-600"></i>
+          <div class="flex-1">
+            <span class="text-sm font-semibold text-green-700">2FA Aktif ✅</span>
+            <p class="text-[11px] text-green-500">Akun Anda terlindungi</p>
+          </div>
+          <a href="{{ route('admin.2fa.setup') }}" class="text-[10px] text-green-600 hover:underline font-bold">Kelola</a>
+        </div>
+      @else
+        <a href="{{ route('admin.2fa.setup') }}" class="flex items-center gap-3 p-3 rounded-xl bg-red-50 hover:bg-red-100 border border-red-200 transition-all">
+          <i class="fas fa-shield-alt text-red-500"></i>
+          <div>
+            <span class="text-sm font-semibold text-red-700">Aktifkan 2FA</span>
+            <p class="text-[11px] text-red-400">Keamanan akun belum aktif</p>
+          </div>
+          <i class="fas fa-chevron-right text-red-400 ml-auto text-xs"></i>
+        </a>
+      @endif
     </div>
 
     <div class="bg-gradient-to-br from-teal-700 to-teal-900 rounded-2xl p-5 text-white space-y-2">

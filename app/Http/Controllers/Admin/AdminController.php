@@ -15,11 +15,11 @@ class AdminController extends Controller
     public function dashboard()
     {
         return view('admin.dashboard', [
-            'totalBerita' => Berita::count(),
-            'totalDosen'  => Dosen::count(),
-            'totalSlide'  => Slide::count(),
-            'totalPoster' => Poster::count(),
-            'beritaTerbaru' => Berita::with('kategori')->latest()->take(5)->get(),
+            'totalBerita'    => Berita::count(),
+            'totalDosen'     => Dosen::count(),
+            'totalSlide'     => Slide::count(),
+            'totalPoster'    => Poster::count(),
+            'beritaTerbaru'  => Berita::with('kategori')->latest()->take(5)->get(),
         ]);
     }
 
@@ -39,12 +39,22 @@ class AdminController extends Controller
         ]);
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            if (Auth::user()->is_admin) {
-                $request->session()->regenerate();
-                return redirect()->route('admin.dashboard');
+            if (!Auth::user()->is_admin) {
+                Auth::logout();
+                return back()->withErrors(['email' => 'Akun ini bukan akun admin.']);
             }
-            Auth::logout();
-            return back()->withErrors(['email' => 'Akun ini bukan akun admin.']);
+
+            $user = Auth::user();
+
+            // Jika 2FA aktif — simpan user_id di session, logout sementara, minta OTP
+            if ($user->google2fa_enabled) {
+                Auth::logout();
+                session(['2fa_user_id' => $user->id]);
+                return redirect()->route('admin.2fa.verify-form');
+            }
+
+            $request->session()->regenerate();
+            return redirect()->route('admin.dashboard');
         }
 
         return back()->withErrors(['email' => 'Email atau password salah.']);

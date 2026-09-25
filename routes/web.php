@@ -1,13 +1,15 @@
-<?php
+﻿<?php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\TwoFactorController;
 use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\DosenController;
 use App\Http\Controllers\Admin\KategoriController;
 use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Admin\PosterController;
+use App\Http\Controllers\Admin\DokumenController;
 
 // ═══════════════════════════════════════════
 //  PUBLIC ROUTES
@@ -57,7 +59,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/login', [AdminController::class, 'login'])->name('login.post');
 
     // Route terproteksi
+    Route::get('/2fa/verify',  [TwoFactorController::class, 'verifyForm'])->name('2fa.verify-form');
+    Route::post('/2fa/verify', [TwoFactorController::class, 'verify'])->name('2fa.verify');
+
     Route::middleware(['auth', 'admin'])->group(function () {
+        Route::get('/2fa/setup',    [TwoFactorController::class, 'setup'])->name('2fa.setup');
+        Route::post('/2fa/activate',[TwoFactorController::class, 'activate'])->name('2fa.activate');
+        Route::post('/2fa/disable', [TwoFactorController::class, 'disable'])->name('2fa.disable');
         Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
@@ -68,5 +76,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/beritas/scrape',      [BeritaController::class, 'scrapeUrl'])->name('beritas.scrape');
         Route::post('/beritas/store-bulk',  [BeritaController::class, 'storeBulk'])->name('beritas.store-bulk');
         Route::resource('posters',  PosterController::class)->except(['show']);
+        Route::resource('dokumens', DokumenController::class)->except(['show']);
     });
 });
