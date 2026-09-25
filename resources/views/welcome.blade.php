@@ -3,44 +3,24 @@
 @section('content')
 <div class="space-y-16">
   <!-- HERO CAROUSEL -->
-  <section class="carousel-container min-h-[50vh] md:min-h-[70vh] bg-teal-900 rounded-3xl overflow-hidden relative -mt-6" id="beranda">
-    <div class="carousel-track" id="carousel-track">
+  <section class="carousel-container bg-slate-900 rounded-3xl overflow-hidden relative -mt-6 shadow-sm border border-gray-100" id="beranda">
+    <div class="carousel-track flex transition-transform duration-500 ease-in-out" id="carousel-track">
       @forelse($slides as $slide)
       @php
-        $imgUrl = str_starts_with($slide->gambar, 'http') ? $slide->gambar : asset('storage/' . $slide->gambar);
+        $imgUrl = str_starts_with($slide->gambar, "http") ? $slide->gambar : asset("storage/" . $slide->gambar);
       @endphp
-      <div class="carousel-slide relative min-h-[50vh] md:min-h-[70vh] flex items-center justify-center bg-cover bg-center" style="background-image: url('{{ $imgUrl }}')">
-        <div class="absolute inset-0 bg-black/30 z-0"></div>
+      <div class="carousel-slide min-w-full relative flex items-center justify-center bg-slate-950">
+        <img src="{{ $imgUrl }}" alt="{{ $slide->judul }}" class="w-full h-auto max-h-[75vh] object-contain block mx-auto">
       </div>
       @empty
-      <div class="carousel-slide relative min-h-[50vh] md:min-h-[70vh] flex items-center justify-center bg-teal-800">
-        <p class="text-teal-300 text-sm">Belum ada slide. <a href="{{ route('admin.slides.create') }}" class="underline">Tambah di admin</a>.</p>
+      <div class="carousel-slide min-w-full relative min-h-[350px] flex items-center justify-center bg-teal-800">
+        <p class="text-teal-300 text-sm">Belum ada slide. <a href="{{ route("admin.slides.create") }}" class="underline">Tambah di admin</a>.</p>
       </div>
       @endforelse
     </div>
-    <button class="absolute top-1/2 left-4 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 hover:bg-black/50 text-white flex items-center justify-center focus:outline-none transition-all" id="carousel-prev"><i class="fas fa-chevron-left"></i></button>
-    <button class="absolute top-1/2 right-4 -translate-y-1/2 w-10 h-10 rounded-full bg-black/30 hover:bg-black/50 text-white flex items-center justify-center focus:outline-none transition-all" id="carousel-next"><i class="fas fa-chevron-right"></i></button>
+    <button class="absolute top-1/2 left-4 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center focus:outline-none transition-all shadow-lg z-10" id="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+    <button class="absolute top-1/2 right-4 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center focus:outline-none transition-all shadow-lg z-10" id="carousel-next"><i class="fas fa-chevron-right"></i></button>
   </section>
-
-  <!-- Introduction Box -->
-  <div class="bg-gradient-to-br from-teal-800 to-teal-900 rounded-3xl p-8 sm:p-12 text-white shadow-xl relative overflow-hidden">
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(201,168,76,0.15),transparent_60%)]"></div>
-    <div class="relative z-10 max-w-3xl space-y-4">
-      <span class="inline-block bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">S1 - Terakreditasi B</span>
-      <h2 class="text-3xl sm:text-4xl font-black leading-tight">PAI STAIMAS Wonogiri: Tempatmu Tumbuh Menjadi Guru yang Menginspirasi</h2>
-      <p class="text-teal-100 text-sm sm:text-base leading-relaxed">
-        Ingin jadi pendidik yang tak hanya cerdas, tapi juga mampu menanamkan nilai-nilai Islam dalam setiap langkah? Prodi Pendidikan Agama Islam (PAI) STAIMAS Wonogiri hadir untuk mencetak generasi guru yang berilmu, berakhlak, dan berdedikasi. Yuk, gabung dan wujudkan cita-citamu bersama kami!
-      </p>
-      <div class="pt-4 flex flex-wrap gap-4">
-        <a href="https://staimaswonogiri.ecampuz.com/eadmisi/" target="_blank" class="bg-yellow-500 hover:bg-yellow-600 text-gray-950 font-bold px-6 py-3 rounded-xl text-sm transition-all shadow-md shadow-yellow-500/20 flex items-center gap-2">
-          <i class="fas fa-user-plus"></i> Daftar PMB PAI 2025
-        </a>
-        <a href="#kurikulum" class="bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold px-6 py-3 rounded-xl text-sm transition-all flex items-center gap-2">
-          <i class="fas fa-file-download"></i> Kurikulum PAI
-        </a>
-      </div>
-    </div>
-  </div>
 
   <!-- SAMBUTAN KETUA PROGRAM STUDI PAI -->
   <div class="bg-white rounded-3xl border border-gray-100 p-8 sm:p-10 shadow-sm relative overflow-hidden">
@@ -57,7 +37,7 @@
           <p class="text-xs font-semibold text-yellow-600">Kaprodi S1 Pendidikan Agama Islam STAIMAS Wonogiri</p>
         </div>
         <p class="text-gray-600 text-sm leading-relaxed italic">
-          "Assalamu’alaikum Warahmatullahi Wabarakatuh. Selamat datang di portal resmi Program Studi Pendidikan Agama Islam (PAI) STAIMAS Wonogiri. Kami berkomitmen menyelenggarakan pendidikan berkualitas yang tidak hanya membekali mahasiswa dengan keilmuan keislaman yang mendalam, tetapi juga keterampilan edupreneurship serta jiwa kepemimpinan berakhlak mulia untuk mencetak pendidik PAI unggul dan berdedikasi."
+          "Assalamuâ€™alaikum Warahmatullahi Wabarakatuh. Selamat datang di portal resmi Program Studi Pendidikan Agama Islam (PAI) STAIMAS Wonogiri. Kami berkomitmen menyelenggarakan pendidikan berkualitas yang tidak hanya membekali mahasiswa dengan keilmuan keislaman yang mendalam, tetapi juga keterampilan edupreneurship serta jiwa kepemimpinan berakhlak mulia untuk mencetak pendidik PAI unggul dan berdedikasi."
         </p>
         <div class="pt-1">
           <a href="{{ route('pages.sejarah') }}" class="inline-flex items-center gap-1.5 text-xs font-bold text-teal-700 hover:text-teal-900">
