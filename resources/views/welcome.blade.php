@@ -22,33 +22,6 @@
     <button class="absolute top-1/2 right-4 -translate-y-1/2 w-10 h-10 rounded-full bg-black/40 hover:bg-black/70 text-white flex items-center justify-center focus:outline-none transition-all shadow-lg z-10" id="carousel-next"><i class="fas fa-chevron-right"></i></button>
   </section>
 
-  <!-- SAMBUTAN KETUA PROGRAM STUDI PAI -->
-  <div class="bg-white rounded-3xl border border-gray-100 p-8 sm:p-10 shadow-sm relative overflow-hidden">
-    <div class="flex flex-col md:flex-row items-center gap-8">
-      <div class="w-36 h-44 sm:w-44 sm:h-52 rounded-2xl overflow-hidden border-2 border-teal-600/20 shadow-md shrink-0 bg-teal-50">
-        <img src="https://www.staimaswonogiri.ac.id/wp-content/uploads/2025/07/Pak-abdul.png" alt="Abdul Rochman, M.Pd" class="w-full h-full object-cover object-top">
-      </div>
-      <div class="flex-1 space-y-4 text-center md:text-left">
-        <div>
-          <span class="inline-block bg-teal-50 text-teal-800 border border-teal-200 text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-2">
-            <i class="fas fa-quote-left mr-1.5 text-teal-600"></i> Sambutan Ketua Program Studi
-          </span>
-          <h3 class="text-2xl font-bold text-gray-900">Abdul Rochman, M.Pd</h3>
-          <p class="text-xs font-semibold text-yellow-600">Kaprodi S1 Pendidikan Agama Islam STAIMAS Wonogiri</p>
-        </div>
-        <p class="text-gray-600 text-sm leading-relaxed italic">
-          "Assalamuâ€™alaikum Warahmatullahi Wabarakatuh. Selamat datang di portal resmi Program Studi Pendidikan Agama Islam (PAI) STAIMAS Wonogiri. Kami berkomitmen menyelenggarakan pendidikan berkualitas yang tidak hanya membekali mahasiswa dengan keilmuan keislaman yang mendalam, tetapi juga keterampilan edupreneurship serta jiwa kepemimpinan berakhlak mulia untuk mencetak pendidik PAI unggul dan berdedikasi."
-        </p>
-        <div class="pt-1">
-          <a href="{{ route('pages.sejarah') }}" class="inline-flex items-center gap-1.5 text-xs font-bold text-teal-700 hover:text-teal-900">
-            <span>Baca Selengkapnya Tentang Profil Prodi</span>
-            <i class="fas fa-arrow-right text-[10px]"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Visi, Misi, Tujuan, Strategi Tabs -->
   <div id="visi-misi" class="bg-white rounded-3xl border border-gray-100 p-6 sm:p-8 shadow-sm space-y-6">
     <div class="border-b border-gray-100">
