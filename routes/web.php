@@ -54,7 +54,7 @@ Route::get('/pengumuman/{key}', [PageController::class, 'pengumumanShow'])->name
 Route::prefix('admin')->name('admin.')->group(function () {
     // Login (tanpa auth)
     Route::get('/login',  [AdminController::class, 'loginForm'])->name('login');
-    Route::post('/login', [AdminController::class, 'login'])->name('login.post');
+    Route::post('/login', [AdminController::class, 'login'])->middleware('throttle:5,1')->name('login.post');
 
     // Route terproteksi
     Route::middleware(['auth', 'admin'])->group(function () {
