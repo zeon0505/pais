@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id" class="h-full">
 <head>
   <meta charset="utf-8">
@@ -101,10 +101,14 @@
         <span>Poster & Pengumuman</span>
       </a>
 
-      <div class="sidebar-section-title" style="margin-top:10px;">Akademik</div>
+      <div class="sidebar-section-title" style="margin-top:10px;">Akademik & Dokumen</div>
       <a href="{{ route('admin.dosens.index') }}" class="sidebar-link {{ request()->routeIs('admin.dosens*') ? 'active' : '' }}">
         <i class="fas fa-user-tie"></i>
         <span>Dosen PAI</span>
+      </a>
+      <a href="{{ route('admin.dokumens.index') }}" class="sidebar-link {{ request()->routeIs('admin.dokumens*') ? 'active' : '' }}">
+        <i class="fas fa-file-pdf"></i>
+        <span>Dokumen & LAMDIK</span>
       </a>
     </nav>
 
@@ -245,3 +249,4 @@
 
 </body>
 </html>
+

@@ -1,0 +1,21 @@
+warning: in the working copy of 'database/migrations/0001_01_01_000002_create_jobs_table.php', CRLF will be replaced by LF the next time Git touches it
+[1mdiff --git a/database/migrations/0001_01_01_000002_create_jobs_table.php b/database/migrations/0001_01_01_000002_create_jobs_table.php[m
+[1mindex edac6fe..1e8e257 100644[m
+[1m--- a/database/migrations/0001_01_01_000002_create_jobs_table.php[m
+[1m+++ b/database/migrations/0001_01_01_000002_create_jobs_table.php[m
+[36m@@ -37,13 +37,11 @@[m [mpublic function up(): void[m
+         Schema::create('failed_jobs', function (Blueprint $table) {[m
+             $table->id();[m
+             $table->string('uuid')->unique();[m
+[31m-            $table->string('connection');[m
+[31m-            $table->string('queue');[m
+[32m+[m[32m            $table->string('connection', 100);[m
+[32m+[m[32m            $table->string('queue', 100);[m
+             $table->longText('payload');[m
+             $table->longText('exception');[m
+             $table->timestamp('failed_at')->useCurrent();[m
+[31m-[m
+[31m-            $table->index(['connection', 'queue', 'failed_at']);[m
+         });[m
+     }[m
+ [m
