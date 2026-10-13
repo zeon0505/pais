@@ -91,12 +91,12 @@ class AdminSeeder extends Seeder
         // ── Dosen ──
         Dosen::truncate();
         $dosens = [
-            ['nama' => 'Abdul Rochman, M.Pd',           'jabatan' => 'Ketua Program Studi', 'foto' => 'https://www.staimaswonogiri.ac.id/wp-content/uploads/2025/07/Pak-abdul.png',    'urutan' => 1],
+            ['nama' => 'Ratih, M.Pd',                   'jabatan' => 'Ketua Program Studi', 'foto' => 'assest/ratih.png',                                              'urutan' => 1],
             ['nama' => 'Amir Mukminin, S.Pd.I, M.Pd',  'jabatan' => 'Dosen Tetap PAI',    'foto' => 'https://www.staimaswonogiri.ac.id/wp-content/uploads/2025/07/pak-amir.png',     'urutan' => 2],
             ['nama' => 'Dr. Ali Mahbub, S.Pd.I, M.Pd', 'jabatan' => 'Dosen Tetap PAI',    'foto' => 'https://www.staimaswonogiri.ac.id/wp-content/uploads/2025/07/pak-ali.png',      'urutan' => 3],
             ['nama' => 'Dr. Dewi Agustini, S.Sos., M.M','jabatan' => 'Dosen Tetap PAI',   'foto' => 'https://www.staimaswonogiri.ac.id/wp-content/uploads/2025/07/bu-dewi-1.png',    'urutan' => 4],
             ['nama' => 'Maulana Iskandar, M.Pd',        'jabatan' => 'Dosen Tetap PAI',    'foto' => 'https://www.staimaswonogiri.ac.id/wp-content/uploads/2025/07/pak-maulana-1.png','urutan' => 5],
-            ['nama' => 'Ratih, M.Pd',                   'jabatan' => 'Dosen Tetap PAI',    'foto' => 'https://www.staimaswonogiri.ac.id/wp-content/uploads/2025/07/bu-ratih.png',    'urutan' => 6],
+            ['nama' => 'Abdul Rochman, M.Pd',           'jabatan' => 'Dosen Tetap PAI',    'foto' => 'https://www.staimaswonogiri.ac.id/wp-content/uploads/2025/07/Pak-abdul.png',    'urutan' => 6],
             ['nama' => 'Suliwati, M.Pd',                'jabatan' => 'Dosen Tetap PAI',    'foto' => 'https://www.staimaswonogiri.ac.id/wp-content/uploads/2025/07/mbak-suli.png',   'urutan' => 7],
         ];
         foreach ($dosens as $d) {
